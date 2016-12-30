@@ -108,5 +108,3 @@ module.exports = class Light {
         }
     }
 }
-
-module.exports.Light;
