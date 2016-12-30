@@ -23,6 +23,10 @@ module.exports = class Light {
         return this.container;
     }
 
+    static reset() {
+        Ws.reset();
+    }
+
     /*
      *  @param Color color
      */
