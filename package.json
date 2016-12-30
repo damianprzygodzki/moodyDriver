@@ -1,0 +1,13 @@
+{
+  "name": "Moody",
+  "version": "0.1.0",
+  "description": "Node app for controling rpi lights",
+  "dependencies": {
+    "color": "^0.11.4",
+    "ds18b20": "^0.1.0",
+    "express": "^4.14.0",
+    "lcd": "^1.1.4",
+    "rpi-ws281x-native": "^0.8.1",
+    "socket.io": "^1.4.8"
+  }
+}
