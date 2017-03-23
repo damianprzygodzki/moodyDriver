@@ -32,7 +32,7 @@ module.exports = class Light {
             
             this.solid(Color(cache));
             
-        }, 10 * 1000);
+        }, 300 * 1000);
     }
 
     getContainer() {
