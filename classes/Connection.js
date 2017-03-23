@@ -11,6 +11,7 @@ module.exports = class Connection {
             console.log('Connected to server: ' + this.uri + '\n...');
 
             this.light.initAnimation();
+            this.light.clock();
         });
 
         this.io.on('getLights', () => {
