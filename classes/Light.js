@@ -124,6 +124,10 @@ module.exports = class Light {
                 this.container = Object.assign({}, this.container, {
                     color: response.color[0]
                 })
+            }else{
+                for(var i = 0; i < this.numLeds; i++){
+                    this.setPixel(i, Color(response.color[i] ? response.color[i] : "#000000"));
+                }
             }
         }
     }
