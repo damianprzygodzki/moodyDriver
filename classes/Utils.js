@@ -1,4 +1,5 @@
 'use strict';
+const Color = require('color');
 
 module.exports = class Utils {
 
