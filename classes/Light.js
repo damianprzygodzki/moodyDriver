@@ -84,14 +84,22 @@ module.exports = class Light {
                 this.setPixel(0, black);
                 this.setPixel(29, black);
             }, 200);
+            setTimeout(() => {
+                this.setPixel(0, white);
+                this.setPixel(29, white);
+                setTimeout(() => {
+                    this.setPixel(0, black);
+                    this.setPixel(29, black);
+                }, 200);
+            }, 300);
             
             setTimeout(() => {
                 this.setPixel(14, red);
                 setTimeout(() => {
-                    this.setPixel(14, red);
+                    this.setPixel(14, black);
                 }, 200);
-            }, 2000);
-        }, 4000);
+            }, 1000);
+        }, 3000);
     }
 
     initAnimation() {
