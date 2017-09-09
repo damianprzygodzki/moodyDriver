@@ -24,22 +24,10 @@ module.exports = class Utils {
     }
 
     static getRandomColor() {
-        return Color().rgb(getRandom(0,255),getRandom(0,255),getRandom(0,255));
-    }
-
-    static getRandomColorFromPalette(palette) {
-        return Color(palette[getRandom(0, palette.length - 1)]);
-    }
-
-    /**
-     *  From string with pallete
-     *  it returns array with Color
-     */
-    static getPalette(string) {
-        let palette = string.split(",");
-
-        return palette.map(item =>
-            Color(item)
-        )
+        return Color().rgb(
+            this.getRandom(0,255),
+            this.getRandom(0,255),
+            this.getRandom(0,255)
+        );
     }
 }
