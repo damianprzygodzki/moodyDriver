@@ -5,7 +5,7 @@ const Connection = require('./classes/Connection.js');
 const config = require('./config.json');
 
 /*
-*      PROCESS ----------------------------------------------------------------
+*      PROCESS -----------------------------------------------------------------
 */
 
 // Handling exit
@@ -17,12 +17,21 @@ process.on('SIGINT', () => {
 });
 
 /*
- *      CONNECTION --------------------------------------------------------------
+ *      HARDWARE ---------------------------------------------------------------
+ */
+
+const light = new Light(
+    config.NUM_LEDS
+);
+
+/*
+ *      CONNECTION -------------------------------------------------------------
  */
 
 const conn = new Connection(
     config.DEVICE_ID,
     config.NAME,
     config.NUM_LEDS,
-    config.SERVER_URI
+    config.SERVER_URI,
+    light
 );
