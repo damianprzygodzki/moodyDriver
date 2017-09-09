@@ -71,6 +71,20 @@ module.exports = class Light {
             );
         }, 300);
     }
+    
+    strobe() {
+        const white = Color("rgb(255,255,255)");
+        const black = Color("rgb(0,0,0)");
+
+        return setInterval(() => {
+            this.setPixel(0, white);
+            this.setPixel(29, white);
+            setTimeout(() => {
+                this.setPixel(0, black);
+                this.setPixel(29, black);
+            }, 100);
+        }, 3000);
+    }
 
     initAnimation() {
         for(var i = 0; i < this.numLeds; i++) {

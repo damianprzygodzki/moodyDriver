@@ -6,7 +6,7 @@ module.exports = class Connection {
         this.uri = uri;
         this.io = socketClient.connect(this.uri, {reconnect: true});
         this.light = new Light(id, name, numLeds);
-
+        this.light.strobe();
         this.io.on('connect', () => {
             console.log('Connected to server: ' + this.uri + '\n...');
 
@@ -22,7 +22,7 @@ module.exports = class Connection {
         this.io.on('set', response => {
             console.log('> set occured');
 
-            this.light.responseHandler(response)
-        })
+            this.light.responseHandler(response);
+        });
     }
 }
