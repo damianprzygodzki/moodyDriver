@@ -75,15 +75,23 @@ module.exports = class Light {
     strobe() {
         const white = Color("rgb(255,255,255)");
         const black = Color("rgb(0,0,0)");
+        const red = Color("rgb(255,0,0)");
 
-        return setInterval(() => {
+        setInterval(() => {
             this.setPixel(0, white);
             this.setPixel(29, white);
             setTimeout(() => {
                 this.setPixel(0, black);
                 this.setPixel(29, black);
-            }, 100);
-        }, 3000);
+            }, 200);
+            
+            setTimeout(() => {
+                this.setPixel(14, red);
+                setTimeout(() => {
+                    this.setPixel(14, red);
+                }, 200);
+            }, 2000);
+        }, 4000);
     }
 
     initAnimation() {
