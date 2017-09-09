@@ -30,7 +30,7 @@ module.exports = class Connection {
         });
         
         this.io.on('set', response => {
-            if(this.container.id == response.id){
+            if(JSON.stringify(this.container.id) !== JSON.stringify(response.id)){
                 return;
             }
             

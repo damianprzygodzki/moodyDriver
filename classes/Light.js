@@ -11,7 +11,7 @@ module.exports = class Light {
         this.pixelData = new Uint32Array(this.numLeds);
         
         // HARDWARE init
-        Ws.init(this.numLeds);
+        Ws.init(length);
     }
     
     static reset() {
