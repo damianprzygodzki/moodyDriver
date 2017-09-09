@@ -1,5 +1,5 @@
 const socketClient = require('socket.io-client');
-const Light = require('./Light.js');
+const Color = require('color');
 
 module.exports = class Connection {
     constructor(id, name, length, uri, light) {
