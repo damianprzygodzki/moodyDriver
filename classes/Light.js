@@ -83,15 +83,15 @@ module.exports = class Light {
             setTimeout(() => {
                 this.setPixel(0, black);
                 this.setPixel(29, black);
-            }, 200);
+            }, 50);
             setTimeout(() => {
                 this.setPixel(0, white);
                 this.setPixel(29, white);
                 setTimeout(() => {
                     this.setPixel(0, black);
                     this.setPixel(29, black);
-                }, 200);
-            }, 300);
+                }, 50);
+            }, 200);
             
             setTimeout(() => {
                 this.setPixel(14, red);
