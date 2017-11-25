@@ -1,6 +1,4 @@
 {
-    "DEVICE_ID": 0,
     "NUM_LEDS": 30,
-    "NAME": "",
     "SERVER_URI": ""
 }

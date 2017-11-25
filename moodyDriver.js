@@ -29,8 +29,6 @@ const light = new Light(
  */
 
 const conn = new Connection(
-    config.DEVICE_ID,
-    config.NAME,
     config.NUM_LEDS,
     config.SERVER_URI,
     light

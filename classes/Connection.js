@@ -1,14 +1,13 @@
 'use strict';
 
-
+const os = require('os');
 const socketClient = require('socket.io-client');
 const Color = require('color');
 
 module.exports = class Connection {
-    constructor(id, name, length, uri, light) {
+    constructor(length, uri, light) {
         this.container = {
-            id: id,
-            name: name,
+            id: os.hostname(),
             length: length,
             color: Color('#000000')
         };
