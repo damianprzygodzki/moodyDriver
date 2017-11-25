@@ -42,7 +42,7 @@ module.exports = class Light {
         for(var i = 0; i < this.numLeds; i++) {
             const black = Color("rgb(0,0,0)");
             
-            this.setPixel(i, black);
+            this.setPixel(i - 1, black);
             
             setTimeout(() => {
                 this.setPixel(i, Utils.getRandomColor());
