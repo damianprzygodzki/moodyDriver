@@ -40,8 +40,8 @@ module.exports = class Light {
     
     initAnimation() {
         for(var i = 0; i < this.numLeds; i++){
+            if(i > 0) this.setPixel(i-1, Color("#000000"));
             this.setPixel(i, Utils.getRandomColor());
-            console.log(Utils.getRandomColor());
             Utils.sleep(50);
         }
     }
