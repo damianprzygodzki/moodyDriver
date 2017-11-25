@@ -41,7 +41,8 @@ module.exports = class Light {
     initAnimation() {
         for(var i = 0; i < this.numLeds; i++)
             setTimeout(() => {
-                i > 0 && this.setPixel(i - 1, Color("rgb(0,0,0)"));
+                const black = Color("rgb(0,0,0)");
+                if(i > 0) this.setPixel(i - 1, black);
                 this.setPixel(i, Utils.getRandomColor());
             }, 50);
             
