@@ -39,7 +39,7 @@ module.exports = class Light {
     }
     
     initAnimation() {
-        for(var i = 0; i < this.numLeds; i++)
+        for(var i = 0; i < this.numLeds; i++){
             setTimeout(() => {
                 const black = Color("rgb(0,0,0)");
                 if(i > 0) this.setPixel(i - 1, black);
