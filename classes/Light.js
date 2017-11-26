@@ -6,9 +6,9 @@ const Color = require('color');
 
 module.exports = class Light {
     constructor(length) {
-        this.numLeds = length;
+        this.length = length;
         this.currentLoop = null;
-        this.pixelData = new Uint32Array(this.numLeds);
+        this.pixelData = new Uint32Array(this.length);
         
         // HARDWARE init
         Ws.init(length);
@@ -22,27 +22,8 @@ module.exports = class Light {
     *  @param Color color
     */
     solid(color) {
-        for(var i = 0; i < this.numLeds; i++){
+        for(var i = 0; i < this.length; i++){
             this.setPixel(i, color);
-        }
-    }
-    
-    /*
-    *  @param String from
-    *  @param String to
-    */
-    fadeMix(to, from) {
-        const range = 20;
-        for(var i = 1; i <= range; i++){
-            this.solid(Color(from).mix(Color(to), i / range));
-        }
-    }
-    
-    initAnimation() {
-        for(var i = 0; i < this.numLeds; i++){
-            this.setPixel(i, Utils.getRandomColor());
-            Utils.sleep(50);
-            this.setPixel(i, Color("#000000"));
         }
     }
     

@@ -3,6 +3,7 @@
 const os = require('os');
 const socketClient = require('socket.io-client');
 const Color = require('color');
+const Animations = require('./Animations.js');
 
 module.exports = class Connection {
     constructor(length, uri, light) {
@@ -22,7 +23,7 @@ module.exports = class Connection {
         this.io.on('connect', () => {
             console.log('Connected to server: ' + this.uri + '\n...');
             
-            this.light.initAnimation();
+            Animations.randomPixelIteration(this.light);
         });
         
         this.io.on('getLights', () => {
@@ -38,16 +39,23 @@ module.exports = class Connection {
             
             console.log('> set occured');
             
-            if(response.color.length === 1){
-                this.light.fadeMix(this.container.color, response.color[0]);
-                
-                this.container = Object.assign({}, this.container, {
-                    color: response.color[0]
-                });
-            }else{
-                for(var i = 0; i < this.container.length; i++){
-                    this.light.setPixel(i, Color(response.color[i] ? response.color[i] : "#000000"));
-                }
+            switch(JSON.stringify(response.type)) {
+                case 'solid':
+                    Animations.fade(this.light, this.container.color, response.color[0]);
+                    
+                    this.container = Object.assign({}, this.container, {
+                        color: response.color[0]
+                    });
+                    
+                    break;
+                case 'animation':
+                    Animations[response.name](light);
+                    break;
+                case 'single':
+                    for(var i = 0; i < this.container.length; i++){
+                        this.light.setPixel(i, Color(response.color[i] ? response.color[i] : "#000000"));
+                    }
+                    break;
             }
         })
     }
