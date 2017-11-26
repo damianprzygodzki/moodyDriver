@@ -49,7 +49,7 @@ module.exports = class Connection {
                     
                     break;
                 case 'animation':
-                    Animations[response.value](light);
+                    Animations[response.value](this.light);
                     break;
                 case 'single':
                     for(var i = 0; i < this.container.length; i++){
