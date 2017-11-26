@@ -33,4 +33,5 @@ module.exports = class Animations {
             
             Utils.sleep(350);
         }
+    }
 }
