@@ -39,7 +39,7 @@ module.exports = class Connection {
             
             console.log('> set occured');
             
-            switch(JSON.stringify(response.type)) {
+            switch(response.type) {
                 case 'solid':
                     Animations.fade(this.light, this.container.color, response.value[0]);
                     
