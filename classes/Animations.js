@@ -23,7 +23,7 @@ module.exports = class Animations {
     }
     
     static christmas(light) {
-        setInterval(() => {
+        while(true){
             const red = Color("#ff003d");
             const green = Color("#00ab4c");
                 
@@ -34,6 +34,6 @@ module.exports = class Animations {
                 
                 Utils.sleep(350);
             }
-        }, 700);
+        }
     }
 }
