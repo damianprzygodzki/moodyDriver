@@ -23,8 +23,8 @@ module.exports = class Animations {
     }
     
     static christmas(light) {
-        const red = Color('#ff003d');
-        const green = Color('#00ab4c');
+        const red = Color("#ff003d");
+        const green = Color("#00ab4c");
         
         for(var i = 1; i < 3; i++) {
             for(var j = 0; j < light.length; j++) {
