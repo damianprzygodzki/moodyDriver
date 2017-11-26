@@ -28,7 +28,7 @@ module.exports = class Animations {
         
         for(var i = 1; i < 3; i++) {
             for(var j = 0; j < light.length; j++) {
-                light.setPixel((j + i) % 2 ? red : green);
+                light.setPixel(j, (j + i) % 2 ? red : green);
             }
             
             Utils.sleep(350);
