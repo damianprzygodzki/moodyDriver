@@ -41,10 +41,10 @@ module.exports = class Connection {
             
             switch(JSON.stringify(response.type)) {
                 case 'solid':
-                    Animations.fade(this.light, this.container.color, response.color[0]);
+                    Animations.fade(this.light, this.container.color, response.value[0]);
                     
                     this.container = Object.assign({}, this.container, {
-                        color: response.color[0]
+                        color: response.value[0]
                     });
                     
                     break;
