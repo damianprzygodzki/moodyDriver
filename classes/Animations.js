@@ -1,11 +1,13 @@
 'use strict';
 
 const Utils = require('./Utils.js');
+const Color = require('color');
 
 module.exports = class Animations {
-    const black = Color("#000000");
     
     static randomPixelIteration(light) {
+        const black = Color("#000000");
+        
         for(var i = 0; i < light.length; i++){
             light.setPixel(i, Utils.getRandomColor());
             Utils.sleep(200);
