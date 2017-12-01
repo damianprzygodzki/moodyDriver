@@ -10,7 +10,7 @@ module.exports = class Animations {
         
         for(var i = 0; i < light.length; i++){
             light.setPixel(i, Utils.getRandomColor());
-            Utils.sleep(200);
+            Utils.sleep(50);
             light.setPixel(i, black);
         }
     }

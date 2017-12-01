@@ -58,7 +58,7 @@ module.exports = class Connection {
                 case 'animation':
                     this.animation = new Animation(
                         this.light,
-                        Animations[response.value](this.light),
+                        Animations[response.value],
                         100
                     );
                     this.animation.start();
