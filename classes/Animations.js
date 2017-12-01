@@ -32,11 +32,10 @@ module.exports = class Animations {
     }
     
     static glitter(frame, light) {
-        
         for(var j = 0; j < light.length; j++) {
             const rand = Utils.getRandom(0, 10);
             
-            light.setPixel(j, Color('#000000').mix(Color('#ffffff'), rand / 10));
+            light.setPixel(j, Color(light.getPixel(j)).mix(Color('#ffffff'), rand / 10));
         }
     }
 }

@@ -18,6 +18,10 @@ module.exports = class Light {
         Ws.reset();
     }
     
+    getPixel(index) {
+        return Color(this.pixelData[index]);
+    }
+    
     /*
     *  @param Color color
     */
