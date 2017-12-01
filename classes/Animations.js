@@ -30,4 +30,13 @@ module.exports = class Animations {
             light.setPixel(j, (j + i) % 2 ? red : green);
         }
     }
+    
+    static glitter(frame, light) {
+        
+        for(var j = 0; j < light.length; j++) {
+            const rand = Utils.getRandom(0, 10);
+            
+            light.setPixel(j, rand > 3 ? Color('#000000').mix(Color('#ffffff'), rand / 10));
+        }
+    }
 }
