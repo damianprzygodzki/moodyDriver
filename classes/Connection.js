@@ -4,6 +4,7 @@ const os = require('os');
 const socketClient = require('socket.io-client');
 const Color = require('color');
 const Animations = require('./Animations.js');
+const Animation = require('./Animation.js');
 
 module.exports = class Connection {
     constructor(length, uri, light) {
@@ -16,7 +17,7 @@ module.exports = class Connection {
         this.uri = uri;
         this.io = socketClient.connect(this.uri, {reconnect: true});
         this.light = light;
-        this.loop = null;
+        this.animation = null;
         this.initHandlers();
     }
     
@@ -40,7 +41,10 @@ module.exports = class Connection {
             
             console.log('> set occured');
             
-            clearInterval(this.loop);
+            if(this.animation){
+                this.animation.stop();
+                this.animation = null;
+            }
             
             switch(response.type) {
                 case 'solid':
@@ -52,7 +56,12 @@ module.exports = class Connection {
                     
                     break;
                 case 'animation':
-                    this.loop = Animations[response.value](this.light);
+                    this.animation = new Animation(
+                        this.light,
+                        Animations[response.value](this.light),
+                        100
+                    );
+                    this.animation.start();
                     break;
                 case 'single':
                     for(var i = 0; i < this.container.length; i++){
