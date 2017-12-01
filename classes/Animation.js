@@ -1,18 +1,18 @@
 'use strict';
 
 module.exports = class Animation {
-    constructor = (light, frameAction, frameDuration) => {
+    constructor (light, frameAction, frameDuration) {
         this.frame = 0;
         this.frameAction = frameAction;
         this.frameDuration = frameDuration;
         this.light = light;
     }
     
-    stop = () => {
+    stop () {
         clearInterval(this.loop);
     }
     
-    start = () => {
+    start () {
         this.frame = 0;
         
         this.loop = setInterval(() => {
