@@ -16,6 +16,10 @@ module.exports = class Utils {
     static rgb2Int(r, g, b) {
         return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
     }
+    
+    static parseHexColor(hex) {
+        return "#" + ((hex) >>> 0).toString(16).slice(-6);
+    }
 
     static getRandom(min, max) {
         min = Math.ceil(min);

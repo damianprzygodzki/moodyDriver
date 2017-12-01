@@ -19,7 +19,7 @@ module.exports = class Light {
     }
     
     getPixel(index) {
-        return Color(this.pixelData[index]);
+        return Color(Utils.parseHexColor(this.pixelData[index]));
     }
     
     /*
