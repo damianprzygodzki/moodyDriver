@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = class Animation {
     constructor = (light, frameAction, frameDuration) => {
         this.frame = 0;
