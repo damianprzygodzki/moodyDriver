@@ -36,7 +36,7 @@ module.exports = class Animations {
         for(var j = 0; j < light.length; j++) {
             const rand = Utils.getRandom(0, 10);
             
-            light.setPixel(j, rand > 3 ? Color('#000000').mix(Color('#ffffff'), rand / 10));
+            light.setPixel(j, Color('#000000').mix(Color('#ffffff'), rand / 10));
         }
     }
 }
