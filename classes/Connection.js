@@ -16,6 +16,7 @@ module.exports = class Connection {
         this.uri = uri;
         this.io = socketClient.connect(this.uri, {reconnect: true});
         this.light = light;
+        this.loop = null;
         this.initHandlers();
     }
     
@@ -39,6 +40,8 @@ module.exports = class Connection {
             
             console.log('> set occured');
             
+            clearInterval(this.loop);
+            
             switch(response.type) {
                 case 'solid':
                     Animations.fade(this.light, this.container.color, response.value[0]);
@@ -49,7 +52,7 @@ module.exports = class Connection {
                     
                     break;
                 case 'animation':
-                    Animations[response.value](this.light);
+                    this.loop = Animations[response.value](this.light);
                     break;
                 case 'single':
                     for(var i = 0; i < this.container.length; i++){
