@@ -79,6 +79,9 @@ module.exports = class Connection {
         
         this.io.on('getLights', () => { this.io.emit('initSuccess', this.container) });
         
-        this.io.on('set', response => {this.handleSet(response)});
+        this.io.on('set', response => {
+            Settings.save(JSON.stringify(response));
+            this.handleSet(response);
+        });
     }
 }
