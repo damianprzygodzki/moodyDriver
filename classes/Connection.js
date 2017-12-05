@@ -63,6 +63,6 @@ module.exports = class Connection {
         
         this.io.on('getLights', () => { this.io.emit('initSuccess', this.container) });
         
-        this.io.on('set', this.handleSet)
+        this.io.on('set', () => {this.handleSet(response)});
     }
 }
