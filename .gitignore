@@ -3,3 +3,4 @@
 ._.DS_Store
 config.json
 package-lock.json
+.save.settings
