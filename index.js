@@ -2,7 +2,7 @@
 
 const Light = require('./classes/Light.js');
 const Connection = require('./classes/Connection.js');
-const Save = require('./classes/Save.js');
+const Settings = require('./classes/Settings.js');
 const config = require('./config.json');
 
 /*
@@ -12,7 +12,7 @@ const config = require('./config.json');
 // Handling exit
 process.on('SIGINT', () => {
     Light.reset();
-    Save.save(JSON.stringify(conn.getResponse()));
+    Settings.save(JSON.stringify(conn.getResponse()));
     process.nextTick(() => {
         process.exit(0);
     });

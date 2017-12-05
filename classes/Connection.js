@@ -5,6 +5,7 @@ const socketClient = require('socket.io-client');
 const Color = require('color');
 const Animations = require('./Animations.js');
 const Animation = require('./Animation.js');
+const Settings = require('./Settings.js');
 
 module.exports = class Connection {
     constructor(length, uri, light) {
@@ -19,6 +20,8 @@ module.exports = class Connection {
         this.light = light;
         this.animation = null;
         this.lastResponse = null;
+        const lastSettings = Settings.load();
+        lastSettings && this.handleSet(lastSettings);
         this.initHandlers();
     }
     
