@@ -4,7 +4,6 @@ const Utils = require('./Utils.js');
 const Color = require('color');
 
 module.exports = class Animations {
-    
     static randomPixelIteration(light) {
         const black = Color("#000000");
         
