@@ -33,7 +33,7 @@ module.exports = class Animations {
     static iteration(frame, light) {
         const black = Color("#000000");
         const purple = Color("#110033");
-        const i = parseInt(frame % 60 / 2);
+        const i = parseInt((frame % light.length * 2) / 2);
         if(i > 0){
             light.setPixel(i-1, black);
         }
