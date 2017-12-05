@@ -20,7 +20,11 @@ module.exports = class Connection {
         this.light = light;
         this.animation = null;
         this.lastResponse = null;
-        const lastSettings = Settings.load();
+        const lastSettings = try {
+            return Settings.load();
+        } catch (err) {
+            return null;
+        }
         lastSettings && this.handleSet(lastSettings);
         this.initHandlers();
     }
