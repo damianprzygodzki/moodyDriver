@@ -18,13 +18,20 @@ module.exports = class Connection {
         this.io = socketClient.connect(this.uri, {reconnect: true});
         this.light = light;
         this.animation = null;
+        this.lastResponse = null;
         this.initHandlers();
+    }
+    
+    getResponse() {
+        return this.lastResponse;
     }
     
     handleSet (response) {
         if(JSON.stringify(this.container.id) !== JSON.stringify(response.id)){
             return;
         }
+        
+        this.lastResponse = response;
         
         if(this.animation){
             this.animation.stop();
