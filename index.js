@@ -12,7 +12,7 @@ const config = require('./config.json');
 // Handling exit
 process.on('SIGINT', () => {
     Light.reset();
-    Save.save(conn.getResponse());
+    Save.save(JSON.stringify(conn.getResponse()));
     process.nextTick(() => {
         process.exit(0);
     });
