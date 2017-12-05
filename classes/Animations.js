@@ -30,6 +30,16 @@ module.exports = class Animations {
         }
     }
     
+    static iteration(frame, light) {
+        const black = Color("#000000");
+        const purple = Color("#110033");
+        const i = frame % 30;
+        if(i > 0){
+            light.setPixel(i-1, black);
+        }
+        light.setPixel(i, purple);
+    }
+    
     static glitter(frame, light) {
         for(var j = 0; j < light.length; j++) {
             const rand = Utils.getRandom(0, 10);
