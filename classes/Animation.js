@@ -36,6 +36,6 @@ module.exports = class Animation {
                 );
                 this.frame++;
             }, this.frameDuration);
-        }
+        }catch(){}
     }
 }
