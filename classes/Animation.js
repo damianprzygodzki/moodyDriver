@@ -9,7 +9,12 @@ module.exports = class Animation {
         this.light = light;
 
         this.frameAction = function(frameNo, lightLength, setPixel, getPixel, Color){
-            eval(script);
+            const red = Color("#ff003d");
+            const green = Color("#00ab4c");
+            const i = frameNo % 2;
+            for(var j = 0; j < lightLength; j++) {
+                setPixel(j, (j + i) % 2 ? red : green);
+            }
         };
     }
 
@@ -17,12 +22,16 @@ module.exports = class Animation {
         clearInterval(this.loop);
     }
 
+    setPixel (i, c) {
+        this.light.setPixel(i, c);
+    }
+
     start () {
         this.frame = 0;
 
         this.loop = setInterval(() => {
             this.frameAction.call(
-                this, this.frame, this.light.length, this.light.setPixel, this.light.getPixel, Color
+                this, this.frame, this.light.length, this.setPixel, this.light.getPixel, Color
             );
             this.frame++;
         }, this.frameDuration);
