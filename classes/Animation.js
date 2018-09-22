@@ -37,6 +37,7 @@ module.exports = class Animation {
             }
             catch (e) {
                 console.log(e);
+                this.stop();
             }
             this.frame++;
         }, this.frameDuration);
