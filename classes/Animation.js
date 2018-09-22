@@ -27,7 +27,7 @@ module.exports = class Animation {
         this.loop = setInterval(() => {
             this.frameAction.call(
                 this,
-                Color
+                Color,
                 this.frame,
                 this.light.length,
                 this.setPixel.bind(this),
