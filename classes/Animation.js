@@ -10,7 +10,7 @@ module.exports = class Animation {
 
         this.frameAction = function(frameNo, lightLength, setPixel, getPixel, Color){
             eval(script);
-        }.bind(this, this.frame, this.light.length, this.light.setPixel, this.light.getPixel, Color);
+        };
     }
 
     stop () {
@@ -21,7 +21,9 @@ module.exports = class Animation {
         this.frame = 0;
 
         this.loop = setInterval(() => {
-            this.frameAction();
+            this.frameAction().bind(
+                this, this.frame, this.light.length, this.light.setPixel, this.light.getPixel, Color
+            );
             this.frame++;
         }, this.frameDuration);
     }
