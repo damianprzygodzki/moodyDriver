@@ -24,16 +24,18 @@ module.exports = class Animation {
     start () {
         this.frame = 0;
 
-        this.loop = setInterval(() => {
-            this.frameAction.call(
-                this,
-                Color,
-                this.frame,
-                this.light.length,
-                this.setPixel.bind(this),
-                this.light.getPixel.bind(this)
-            );
-            this.frame++;
-        }, this.frameDuration);
+        try{
+            this.loop = setInterval(() => {
+                this.frameAction.call(
+                    this,
+                    Color,
+                    this.frame,
+                    this.light.length,
+                    this.setPixel.bind(this),
+                    this.light.getPixel.bind(this)
+                );
+                this.frame++;
+            }, this.frameDuration);
+        }
     }
 }
