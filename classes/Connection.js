@@ -14,7 +14,7 @@ module.exports = class Connection {
             length: length,
             color: Color('#000000')
         };
-        
+
         this.uri = uri;
         this.io = socketClient.connect(this.uri, {reconnect: true});
         this.light = light;
@@ -30,36 +30,36 @@ module.exports = class Connection {
         lastSettings && this.handleSet(lastSettings);
         this.initHandlers();
     }
-    
+
     getResponse() {
         return this.lastResponse;
     }
-    
+
     handleSet (response) {
         if(JSON.stringify(this.container.id) !== JSON.stringify(response.id)){
             return;
         }
-        
+
         this.lastResponse = response;
-        
+
         if(this.animation){
             this.animation.stop();
             this.animation = null;
         }
-        
+
         switch(response.type) {
             case 'solid':
                 Animations.fade(this.light, this.container.color, response.value[0]);
-                
+
                 this.container = Object.assign({}, this.container, {
                     color: response.value[0]
                 });
-                
+
                 break;
             case 'animation':
                 this.animation = new Animation(
                     this.light,
-                    Animations[response.value],
+                    response.value,
                     100
                 );
                 this.animation.start();
@@ -71,14 +71,14 @@ module.exports = class Connection {
                 break;
         }
     }
-    
+
     initHandlers() {
         this.io.on('connect', () => {
             console.log('Connected to server: ' + this.uri + '\n...');
         });
-        
+
         this.io.on('getLights', () => { this.io.emit('initSuccess', this.container) });
-        
+
         this.io.on('set', response => {
             Settings.save(JSON.stringify(response));
             this.handleSet(response);
