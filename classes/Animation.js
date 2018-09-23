@@ -21,6 +21,10 @@ module.exports = class Animation {
         this.light.setPixel(i, c);
     }
 
+    getPixel (i) {
+        this.light.getPixel(i);
+    }
+
     start () {
         this.frame = 0;
 
@@ -32,7 +36,7 @@ module.exports = class Animation {
                     this.frame,
                     this.light.length,
                     this.setPixel.bind(this),
-                    this.light.getPixel.bind(this)
+                    this.getPixel.bind(this)
                 );
             }
             catch (e) {
