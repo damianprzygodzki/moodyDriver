@@ -60,7 +60,7 @@ module.exports = class Connection {
                 this.animation = new Animation(
                     this.light,
                     response.value.value,
-                    response.value.duration ?: 100
+                    response.value.duration ? reponse.value.duratin : 100
                 );
                 this.animation.start();
                 break;
