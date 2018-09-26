@@ -27,9 +27,8 @@ module.exports = class Light {
     */
     solid(color) {
         for(var i = 0; i < this.length; i++){
-            this.setPixel(i, color);
+            this.setPixel(i, color, true);
         }
-        this.fetch();
     }
 
     /*
