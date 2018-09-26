@@ -64,7 +64,7 @@ module.exports = class Connection {
                 );
                 this.animation.start();
                 break;
-            case 'single':
+            case 'single': // seems like legacy
                 for(var i = 0; i < this.container.length; i++){
                     this.light.setPixel(i, Color(response.color[i] ? response.color[i] : "#000000"));
                 }

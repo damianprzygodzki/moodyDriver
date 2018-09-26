@@ -9,7 +9,8 @@ module.exports = class Animation {
         this.light = light;
 
         this.frameAction = function(Color, frameNo, lightLength, setPixel, getPixel){
-            eval(script)
+            eval(script);
+            this.light.fetch();
         };
     }
 

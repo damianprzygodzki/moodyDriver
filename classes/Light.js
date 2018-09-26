@@ -9,19 +9,19 @@ module.exports = class Light {
         this.length = length;
         this.currentLoop = null;
         this.pixelData = new Uint32Array(this.length);
-        
+
         // HARDWARE init
         Ws.init(length);
     }
-    
+
     static reset() {
         Ws.reset();
     }
-    
+
     getPixel(index) {
         return Color(Utils.parseHexColor(this.pixelData[index]));
     }
-    
+
     /*
     *  @param Color color
     */
@@ -30,13 +30,19 @@ module.exports = class Light {
             this.setPixel(i, color);
         }
     }
-    
+
     /*
     *  @param Integer index
     *  @param Color color
     */
-    setPixel(index, color) {
+    setPixel(index, color, autofetch) {
         this.pixelData[index] = Utils.rgb2Int(color.red(), color.green(), color.blue());
+        if(autofetch){
+            this.fetch();
+        }
+    }
+
+    fetch() {
         Ws.render(this.pixelData);
     }
 }
