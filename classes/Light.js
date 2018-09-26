@@ -29,6 +29,7 @@ module.exports = class Light {
         for(var i = 0; i < this.length; i++){
             this.setPixel(i, color);
         }
+        this.fetch();
     }
 
     /*
